@@ -16,7 +16,7 @@ import android.widget.ImageView;
  */
 
 public class MainActivity extends AppCompatActivity implements Animation.AnimationListener{
-    Button loveY,disloveY,openUrl;
+    Button loveY,disloveY,openUrl,listViewBtn;
     boolean isFlag = true;
     private PrinterTextView mPrinterTextView;
     @Override
@@ -76,6 +76,14 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
             public void onClick(View view) {
                 Uri uri = Uri.parse("http://www.jlovel.top");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        listViewBtn = (Button)findViewById(R.id.listViewBtn);
+        listViewBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,ListViewActivity.class);
                 startActivity(intent);
             }
         });
