@@ -1,6 +1,7 @@
 package com.example.lovej.jlovem;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -46,9 +47,9 @@ public class ListViewActivity extends Activity implements AdapterView.OnItemClic
          */
         int[] img = new int[]{R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher, R.mipmap.ic_launcher};
         //图片右边的第一排文字
-        String[] text1 = new String[]{"酷狗热歌", "DJ热碟", "网络红歌", "咖啡厅", "新歌", "经典", "抒情"};
+        String[] text1 = new String[]{"1", "2", "3", "4", "5", "6", "7"};
         //图片右边的第二排文字
-        String[] text2 = new String[]{"Beyond-光辉岁月", "许嵩-山水之间", "周杰伦-晴天", "许嵩-雅俗共赏", "周杰伦-龙卷风", "许嵩-千百度", "汪晨蕊-友情岁月"};
+        String[] text2 = new String[]{"aaa", "bbb", "ccc", "ddd", "eee", "fff", "ggg"};
 
         /*
          * 实例化泛型集合listDate
@@ -76,6 +77,13 @@ public class ListViewActivity extends Activity implements AdapterView.OnItemClic
                 listDate.add(map);
             }
         }
+        Intent i=getIntent();
+        Map<String, Object>map = new HashMap<>();
+        map.put("img1", R.mipmap.ic_launcher);
+        map.put("text1", i.getStringExtra("timu"));
+        map.put("text2", i.getStringExtra("neitong"));
+        map.put("img2", R.mipmap.ic_launcher);
+        listDate.add(map);
 
         /*
          * 调用SimpleAdapter的构造方法
@@ -123,21 +131,21 @@ public class ListViewActivity extends Activity implements AdapterView.OnItemClic
     public void onScrollStateChanged(AbsListView view, int scrollState) {
         switch(scrollState)
         {
-            case SCROLL_STATE_FLING:
-
-                Log.i("Main", "用户在手指离开屏幕之前，由于用力的划了一下，视图仍依靠惯性继续滑动");
-
-                //模拟刷新功能
-                Map<String, Object>map = new HashMap<>();
-                map.put("img1", R.mipmap.ic_launcher);
-                map.put("text1", "增加项");
-                map.put("text2", "增加歌曲");
-                map.put("img2", R.mipmap.ic_launcher);
-                listDate.add(map);
-
-                //通知视图界面更新
-                simpleAdapter.notifyDataSetChanged();
-                break;
+//            case SCROLL_STATE_FLING:
+//
+//                Log.i("Main", "用户在手指离开屏幕之前，由于用力的划了一下，视图仍依靠惯性继续滑动");
+//
+//                //模拟刷新功能
+//                Map<String, Object>map = new HashMap<>();
+//                map.put("img1", R.mipmap.ic_launcher);
+//                map.put("text1", "增加项");
+//                map.put("text2", "增加歌曲");
+//                map.put("img2", R.mipmap.ic_launcher);
+//                listDate.add(map);
+//
+//                //通知视图界面更新
+//                simpleAdapter.notifyDataSetChanged();
+//                break;
 
             case SCROLL_STATE_IDLE:
 

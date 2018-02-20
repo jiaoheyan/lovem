@@ -11,12 +11,14 @@ import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.lovej.jlovem.jishiben.MainPageActivity;
+
 /**
  * Created by Administrator on 2017/12/25 0025.
  */
 
 public class MainActivity extends AppCompatActivity implements Animation.AnimationListener{
-    Button loveY,disloveY,openUrl,listViewBtn;
+    Button loveY,disloveY,openUrl,listViewBtn,jsbBtn,jsb1Btn;
     boolean isFlag = true;
     private PrinterTextView mPrinterTextView;
     @Override
@@ -84,6 +86,22 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,ListViewActivity.class);
+                startActivity(intent);
+            }
+        });
+        jsbBtn = (Button)findViewById(R.id.jsbBtn);
+        jsbBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,JiShiBenActivity.class);
+                startActivity(intent);
+            }
+        });
+        jsb1Btn = (Button)findViewById(R.id.jsb1Btn);
+        jsb1Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,MainPageActivity.class);
                 startActivity(intent);
             }
         });

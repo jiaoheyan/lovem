@@ -40,6 +40,27 @@
             />
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/jsbBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="5"
+            />
+        <Button
+        android:id="@+id/jsb1Btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:text="6"
+        />
+
+    </LinearLayout>
+
     <com.example.lovej.jlovem.PrinterTextView
         android:id="@+id/pt_my"
         android:layout_width="match_parent"
