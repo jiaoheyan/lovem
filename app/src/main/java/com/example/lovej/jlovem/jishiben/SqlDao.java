@@ -27,6 +27,7 @@ public class SqlDao {
         ContentValues values = new ContentValues();
         values.put("name", stu.getName().toString());
         values.put("sex", stu.getSex().toString());
+        values.put("timers", stu.getTimers().toString());
         long insert = db.insert("student", null, values);
         db.close();
         if(insert !=-1){
@@ -50,11 +51,11 @@ public class SqlDao {
      * @param name
      * @param newsex
      */
-    public void update(String name, String newsex){
-        SQLiteDatabase db = helper.getWritableDatabase();
-        db.execSQL("update student set sex=? where name=?",new Object[]{name,newsex});
-        db.close();
-    }
+//    public void update(String name, String newsex){
+//        SQLiteDatabase db = helper.getWritableDatabase();
+//        db.execSQL("update student set sex=? where name=?",new Object[]{name,newsex});
+//        db.close();
+//    }
     /**
      *查找学生姓名
      * @param
@@ -82,9 +83,11 @@ public class SqlDao {
             Student s = new Student();
             String name = cursor.getString(1);
             String sex = cursor.getString(2);
+            String timers = cursor.getString(3);
             //添加到学生bean里面
             s.setName(name);
             s.setSex(sex);
+            s.setTimers(timers);
             list.add(s);
         }
         db.close();

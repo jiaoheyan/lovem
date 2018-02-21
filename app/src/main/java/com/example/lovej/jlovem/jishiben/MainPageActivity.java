@@ -1,6 +1,7 @@
 package com.example.lovej.jlovem.jishiben;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -14,13 +15,9 @@ import android.view.animation.ScaleAnimation;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,21 +25,17 @@ import com.example.lovej.jlovem.R;
 
 import java.util.List;
 
-import static android.R.id.list;
 
 
 /**
  * Created by Administrator on 2018/2/20 0020.
  */
 
-public class MainPageActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class MainPageActivity extends AppCompatActivity  {
 
-    private EditText et_name;
-    private Button bt_add;
     private String name;
-    private RadioGroup rg_group;
-    private TextView tv_showsex;
-    private String showsex;
+    private String showsex = "男";
+    private String str = null;
     private SqlDao dao;
     private Student stu;
     private Student stu2;
@@ -52,8 +45,6 @@ public class MainPageActivity extends AppCompatActivity implements RadioGroup.On
     private PopupWindow pw;
     private TextView delete;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -61,15 +52,39 @@ public class MainPageActivity extends AppCompatActivity implements RadioGroup.On
         setContentView(R.layout.activity_mainpage);
         initView();
         initDate();
-
     }
     //初始化视图
     private void initView() {
-        et_name=(EditText) findViewById(R.id.et_name);
-        bt_add=(Button) findViewById(R.id.bt_add);
-        rg_group=(RadioGroup) findViewById(R.id.rg_group);
-        tv_showsex=(TextView) findViewById(R.id.tv_showsex);
         listView1=(ListView) findViewById(R.id.listView1);
+
+    }
+    private void intentMsg(){
+        Intent intent = getIntent();
+        name = intent.getStringExtra("timu").trim();
+        showsex = intent.getStringExtra("neirong").trim();
+        str = intent.getStringExtra("timers");
+        stu=new Student(name,showsex,str);
+
+        if(TextUtils.isEmpty(name) || TextUtils.isEmpty(showsex)){
+            Toast.makeText(MainPageActivity.this, "添加信息不能为空", Toast.LENGTH_LONG).show();
+
+        }else{
+            stu2=new Student(name);
+            Student findName = dao.findName(stu2);
+            if(name.equals(findName.getName())){
+                Toast.makeText(MainPageActivity.this, "添加的姓名不能一样！", Toast.LENGTH_SHORT).show();
+
+            }else{
+                boolean add = dao.add(stu);
+                if(add){
+                    list=dao.findAll();
+                    adapter.notifyDataSetInvalidated();
+                    Toast.makeText(MainPageActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(MainPageActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
     }
     //初始化数据
     private void initDate() {
@@ -77,37 +92,7 @@ public class MainPageActivity extends AppCompatActivity implements RadioGroup.On
         list=dao.findAll();
         adapter=new MyAdapter();
         listView1.setAdapter(adapter);
-        rg_group.setOnCheckedChangeListener(this);
-        bt_add.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                name = et_name.getText().toString().trim();
-                showsex = tv_showsex.getText().toString().trim();
-                stu=new Student(name,showsex);
-
-                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(showsex)){
-                    Toast.makeText(MainPageActivity.this, "添加信息不能为空", Toast.LENGTH_LONG).show();
-
-                }else{
-                    stu2=new Student(name);
-                    Student findName = dao.findName(stu2);
-                    if(name.equals(findName.getName())){
-                        Toast.makeText(MainPageActivity.this, "添加的姓名不能一样！", Toast.LENGTH_SHORT).show();
-
-                    }else{
-                        boolean add = dao.add(stu);
-                        if(add){
-                            list=dao.findAll();
-                            adapter.notifyDataSetInvalidated();
-                            Toast.makeText(MainPageActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-                        }else {
-                            Toast.makeText(MainPageActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                }
-            }
-        });
+        intentMsg();
         /**
          * listview的条目点击事件
          */
@@ -169,21 +154,22 @@ public class MainPageActivity extends AppCompatActivity implements RadioGroup.On
         });
     }
 
-    //按钮组的点击事件
-    @Override
-    public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-        //获取变更后的选中项的ID
-        int radioButtonId = group.getCheckedRadioButtonId();
-        RadioButton rb = (RadioButton)MainPageActivity.this.findViewById(radioButtonId);
-        //更新文本内容，以符合选中项
-        tv_showsex.setText(rb.getText());
-    }
+//    //按钮组的点击事件
+//    @Override
+//    public void onCheckedChanged(RadioGroup group, int checkedId) {
+//
+//        //获取变更后的选中项的ID
+//        int radioButtonId = group.getCheckedRadioButtonId();
+//        RadioButton rb = (RadioButton)MainPageActivity.this.findViewById(radioButtonId);
+//        //更新文本内容，以符合选中项
+//        tv_showsex.setText(rb.getText());
+//    }
     class MyAdapter extends BaseAdapter{
 
         private String sex2;
         private View view;
         private String name2;
+        private String timers2;
         @SuppressLint("ViewHolder") @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder holder=null ;//设置静态类使其初始化
@@ -195,6 +181,7 @@ public class MainPageActivity extends AppCompatActivity implements RadioGroup.On
                 holder.iv_head = (ImageView) view.findViewById(R.id.iv_head);
                 holder.tv_name = (TextView) view.findViewById(R.id.tv_n);
                 holder.tv_sex = (TextView) view.findViewById(R.id.tv_s);
+                holder.tv_timers = (TextView) view.findViewById(R.id.tv_timers);
 
                 view.setTag(holder);//用来保存一些数据结构。
             }else{
@@ -204,6 +191,7 @@ public class MainPageActivity extends AppCompatActivity implements RadioGroup.On
             }
             name2 = list.get(position).getName();
             sex2 = list.get(position).getSex();
+            timers2 = list.get(position).getTimers();
             if("男".equals(sex2)){			//区分性别
                 holder.iv_head.setImageResource(R.drawable.nan);
             }else{
@@ -211,6 +199,8 @@ public class MainPageActivity extends AppCompatActivity implements RadioGroup.On
             }
             holder.tv_name.setText(name2);
             holder.tv_sex.setText(sex2);
+            holder.tv_timers.setText(timers2);
+
             return view;
         }
         @Override
@@ -238,6 +228,7 @@ public class MainPageActivity extends AppCompatActivity implements RadioGroup.On
         ImageView iv_head;
         TextView tv_name;
         TextView tv_sex;
+        TextView tv_timers;
     }
 
 }
