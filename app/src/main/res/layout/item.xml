@@ -1,41 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" android:orientation="horizontal"
-    android:padding="10dp"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingTop="10dp"
+    android:layout_margin="10dp"
+    android:background="@drawable/listviewshape"
     android:gravity="center">
 
-    <ImageView
-        android:layout_gravity="center"
-        android:id="@+id/iv_head"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_weight="1"
-        />
-
-    <TextView
-
-        android:id="@+id/tv_n"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:textSize="25dp"
-        android:layout_height="wrap_content"
-        android:text="张三"
-        />
-
-    <TextView
-        android:id="@+id/tv_s"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:gravity="center"
-        android:text="男"
-        android:textSize="25dp" />
+        android:orientation="vertical">
+
+        <TextView
+
+            android:paddingLeft="10dp"
+            android:id="@+id/tv_n"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:textSize="20dp"
+            android:ellipsize="end"
+            android:maxEms="5"
+            android:singleLine="true"
+            android:layout_height="wrap_content"
+            android:text="张三"
+            />
+
+        <TextView
+            android:paddingLeft="15dp"
+            android:id="@+id/tv_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:maxEms="7"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="男"
+            android:textSize="15dp" />
+    </LinearLayout>
 
     <TextView
         android:gravity="center"
         android:id="@+id/tv_timers"
         android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:paddingRight="10dp"
         android:layout_width="0dp"
         android:textSize="15dp"
         android:layout_height="wrap_content"

@@ -60,28 +60,30 @@ public class MainPageActivity extends AppCompatActivity  {
     }
     private void intentMsg(){
         Intent intent = getIntent();
-        name = intent.getStringExtra("timu").trim();
-        showsex = intent.getStringExtra("neirong").trim();
-        str = intent.getStringExtra("timers");
-        stu=new Student(name,showsex,str);
+        if (intent.getStringExtra("class").trim().indexOf("JiShiBenActivity")==0){
+            name = intent.getStringExtra("timu").trim();
+            showsex = intent.getStringExtra("neirong").trim();
+            str = intent.getStringExtra("timers");
+            stu=new Student(name,showsex,str);
 
-        if(TextUtils.isEmpty(name) || TextUtils.isEmpty(showsex)){
-            Toast.makeText(MainPageActivity.this, "添加信息不能为空", Toast.LENGTH_LONG).show();
-
-        }else{
-            stu2=new Student(name);
-            Student findName = dao.findName(stu2);
-            if(name.equals(findName.getName())){
-                Toast.makeText(MainPageActivity.this, "添加的姓名不能一样！", Toast.LENGTH_SHORT).show();
+            if(TextUtils.isEmpty(name) || TextUtils.isEmpty(showsex)){
+                Toast.makeText(MainPageActivity.this, "添加信息不能为空", Toast.LENGTH_LONG).show();
 
             }else{
-                boolean add = dao.add(stu);
-                if(add){
-                    list=dao.findAll();
-                    adapter.notifyDataSetInvalidated();
-                    Toast.makeText(MainPageActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainPageActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
+                stu2=new Student(name);
+                Student findName = dao.findName(stu2);
+                if(name.equals(findName.getName())){
+                    Toast.makeText(MainPageActivity.this, "添加的姓名不能一样！", Toast.LENGTH_SHORT).show();
+
+                }else{
+                    boolean add = dao.add(stu);
+                    if(add){
+                        list=dao.findAll();
+                        adapter.notifyDataSetInvalidated();
+                        Toast.makeText(MainPageActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(MainPageActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         }
@@ -96,12 +98,12 @@ public class MainPageActivity extends AppCompatActivity  {
         /**
          * listview的条目点击事件
          */
-        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             private String na;
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    final int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           final int position, long id) {
                 na = list.get(position).getName();
                 View v = View.inflate(MainPageActivity.this, R.layout.adapter_popu_window, null);
                 if (pw != null) {
@@ -131,6 +133,7 @@ public class MainPageActivity extends AppCompatActivity  {
                         adapter.notifyDataSetChanged();//更新适配器
                     }
                 });
+                return false;
             }
         });
 
@@ -178,7 +181,7 @@ public class MainPageActivity extends AppCompatActivity  {
                 holder = new ViewHolder();//创建holder对象
                 view = View.inflate(MainPageActivity.this, R.layout.item,null );
 
-                holder.iv_head = (ImageView) view.findViewById(R.id.iv_head);
+//                holder.iv_head = (ImageView) view.findViewById(R.id.iv_head);
                 holder.tv_name = (TextView) view.findViewById(R.id.tv_n);
                 holder.tv_sex = (TextView) view.findViewById(R.id.tv_s);
                 holder.tv_timers = (TextView) view.findViewById(R.id.tv_timers);
@@ -192,11 +195,11 @@ public class MainPageActivity extends AppCompatActivity  {
             name2 = list.get(position).getName();
             sex2 = list.get(position).getSex();
             timers2 = list.get(position).getTimers();
-            if("男".equals(sex2)){			//区分性别
-                holder.iv_head.setImageResource(R.drawable.nan);
-            }else{
-                holder.iv_head.setImageResource(R.drawable.nv);
-            }
+//            if("男".equals(sex2)){			//区分性别
+//                holder.iv_head.setImageResource(R.drawable.nan);
+//            }else{
+//                holder.iv_head.setImageResource(R.drawable.nv);
+//            }
             holder.tv_name.setText(name2);
             holder.tv_sex.setText(sex2);
             holder.tv_timers.setText(timers2);
@@ -225,7 +228,7 @@ public class MainPageActivity extends AppCompatActivity  {
     }
     //ViewHolder静态类
     static class ViewHolder{
-        ImageView iv_head;
+//        ImageView iv_head;
         TextView tv_name;
         TextView tv_sex;
         TextView tv_timers;

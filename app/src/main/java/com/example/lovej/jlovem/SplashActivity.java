@@ -12,6 +12,8 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.LinearLayout;
 
+import com.example.lovej.jlovem.jishiben.MainPageActivity;
+
 public class SplashActivity extends Activity {
     LinearLayout lL;
     @Override

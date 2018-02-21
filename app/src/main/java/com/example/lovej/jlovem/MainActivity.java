@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,MainPageActivity.class);
+                intent.putExtra("class","MainActivity");
                 startActivity(intent);
             }
         });

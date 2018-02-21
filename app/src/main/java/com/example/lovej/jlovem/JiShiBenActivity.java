@@ -2,10 +2,8 @@ package com.example.lovej.jlovem;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -34,13 +32,14 @@ public class JiShiBenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat formatter = new SimpleDateFormat ("yyyy年MM月dd日 HH:mm:ss ");
+                SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
                 Date curDate = new Date(System.currentTimeMillis());//获取当前时间
                 str = formatter.format(curDate);
                 str = str.trim();
                 tiMuStr = tiMu.getText().toString();
                 neiRongStr = neiRong.getText().toString();
                 Intent intent = new Intent(JiShiBenActivity.this,MainPageActivity.class);
+                intent.putExtra("class","JiShiBenActivity");
                 intent.putExtra("timu",tiMuStr);
                 intent.putExtra("neirong",neiRongStr);
                 intent.putExtra("timers",str);
