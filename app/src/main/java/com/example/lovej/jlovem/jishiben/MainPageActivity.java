@@ -21,6 +21,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lovej.jlovem.ListViewActivity;
 import com.example.lovej.jlovem.R;
 
 import java.util.List;
@@ -70,20 +71,14 @@ public class MainPageActivity extends AppCompatActivity  {
                 Toast.makeText(MainPageActivity.this, "添加信息不能为空", Toast.LENGTH_LONG).show();
 
             }else{
-                stu2=new Student(name);
-                Student findName = dao.findName(stu2);
-                if(name.equals(findName.getName())){
-                    Toast.makeText(MainPageActivity.this, "添加的姓名不能一样！", Toast.LENGTH_SHORT).show();
 
-                }else{
-                    boolean add = dao.add(stu);
-                    if(add){
-                        list=dao.findAll();
-                        adapter.notifyDataSetInvalidated();
-                        Toast.makeText(MainPageActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(MainPageActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
-                    }
+                boolean add = dao.add(stu);
+                if(add){
+                    list=dao.findAll();
+                    adapter.notifyDataSetInvalidated();
+                    Toast.makeText(MainPageActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(MainPageActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
                 }
             }
         }
@@ -98,6 +93,19 @@ public class MainPageActivity extends AppCompatActivity  {
         /**
          * listview的条目点击事件
          */
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String name = list.get(position).getName();//这句是关键，通过postion下标拿到你list集合中的数据，list集合中有你的数据，.出来去接受就行了。
+                String thing = list.get(position).getSex();
+                String time = list.get(position).getTimers();
+                Intent intent = new Intent(MainPageActivity.this, ListDetailActivity.class);
+                intent.putExtra("name",name);
+                intent.putExtra("thing",thing);
+                intent.putExtra("time",time);
+                startActivity(intent);
+            }
+        });
         listView1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             private String na;
 
@@ -157,16 +165,6 @@ public class MainPageActivity extends AppCompatActivity  {
         });
     }
 
-//    //按钮组的点击事件
-//    @Override
-//    public void onCheckedChanged(RadioGroup group, int checkedId) {
-//
-//        //获取变更后的选中项的ID
-//        int radioButtonId = group.getCheckedRadioButtonId();
-//        RadioButton rb = (RadioButton)MainPageActivity.this.findViewById(radioButtonId);
-//        //更新文本内容，以符合选中项
-//        tv_showsex.setText(rb.getText());
-//    }
     class MyAdapter extends BaseAdapter{
 
         private String sex2;
@@ -181,7 +179,6 @@ public class MainPageActivity extends AppCompatActivity  {
                 holder = new ViewHolder();//创建holder对象
                 view = View.inflate(MainPageActivity.this, R.layout.item,null );
 
-//                holder.iv_head = (ImageView) view.findViewById(R.id.iv_head);
                 holder.tv_name = (TextView) view.findViewById(R.id.tv_n);
                 holder.tv_sex = (TextView) view.findViewById(R.id.tv_s);
                 holder.tv_timers = (TextView) view.findViewById(R.id.tv_timers);
@@ -195,11 +192,7 @@ public class MainPageActivity extends AppCompatActivity  {
             name2 = list.get(position).getName();
             sex2 = list.get(position).getSex();
             timers2 = list.get(position).getTimers();
-//            if("男".equals(sex2)){			//区分性别
-//                holder.iv_head.setImageResource(R.drawable.nan);
-//            }else{
-//                holder.iv_head.setImageResource(R.drawable.nv);
-//            }
+
             holder.tv_name.setText(name2);
             holder.tv_sex.setText(sex2);
             holder.tv_timers.setText(timers2);
@@ -228,7 +221,6 @@ public class MainPageActivity extends AppCompatActivity  {
     }
     //ViewHolder静态类
     static class ViewHolder{
-//        ImageView iv_head;
         TextView tv_name;
         TextView tv_sex;
         TextView tv_timers;

@@ -21,6 +21,7 @@
         <activity android:name=".JiShiBenActivity"/>
         <activity android:name=".UnlockViewActivity"></activity>
         <activity android:name=".jishiben.MainPageActivity"></activity>
+        <activity android:name=".jishiben.ListDetailActivity"></activity>
     </application>
 
 </manifest>
