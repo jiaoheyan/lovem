@@ -2,8 +2,11 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#0093ff</color>
     <color name="white">#FFFFFF</color>
     <color name="dengLuBg">#25282a</color>
     <color name="dengluEt">#969b9f</color>
+    <color name="green">#00ff93</color>
+    <color name="gray">#ADADAD</color>
+    <color name="pink">#FF6EB4</color>
 </resources>

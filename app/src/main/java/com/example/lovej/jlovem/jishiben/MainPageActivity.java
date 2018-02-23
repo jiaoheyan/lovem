@@ -15,13 +15,11 @@ import android.view.animation.ScaleAnimation;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.lovej.jlovem.ListViewActivity;
 import com.example.lovej.jlovem.R;
 
 import java.util.List;
@@ -141,7 +139,7 @@ public class MainPageActivity extends AppCompatActivity  {
                         adapter.notifyDataSetChanged();//更新适配器
                     }
                 });
-                return false;
+                return true;
             }
         });
 

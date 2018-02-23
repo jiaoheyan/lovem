@@ -3,22 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:paddingTop="10dp"
-    android:layout_margin="10dp"
-    android:background="@drawable/listviewshape"
-    android:gravity="center">
+    android:padding="5dp"
+    android:background="@color/gray">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:background="@drawable/listviewshape"
         android:orientation="vertical">
+
 
         <TextView
 
             android:paddingLeft="10dp"
             android:id="@+id/tv_n"
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:textSize="20dp"
             android:ellipsize="end"
@@ -33,25 +31,21 @@
             android:id="@+id/tv_s"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:gravity="center"
             android:maxEms="7"
             android:ellipsize="end"
             android:singleLine="true"
             android:text="男"
             android:textSize="15dp" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_timers"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:textSize="15dp"
+            android:layout_height="wrap_content"
+            android:text="2018-02-20"
+            />
     </LinearLayout>
-
-    <TextView
-        android:gravity="center"
-        android:id="@+id/tv_timers"
-        android:layout_weight="1"
-        android:layout_gravity="bottom"
-        android:paddingRight="10dp"
-        android:layout_width="0dp"
-        android:textSize="15dp"
-        android:layout_height="wrap_content"
-        android:text="2018-02-20"
-        />
-
 </LinearLayout>

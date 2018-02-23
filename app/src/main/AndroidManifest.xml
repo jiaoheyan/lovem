@@ -17,10 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".ListViewActivity"/>
         <activity android:name=".JiShiBenActivity"/>
         <activity android:name=".DengLuActivity"></activity>
-        <activity android:name=".UnlockViewActivity"></activity>
         <activity android:name=".jishiben.MainPageActivity"></activity>
         <activity android:name=".jishiben.ListDetailActivity"></activity>
     </application>

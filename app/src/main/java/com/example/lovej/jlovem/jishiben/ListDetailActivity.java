@@ -12,15 +12,18 @@ import com.example.lovej.jlovem.R;
  */
 
 public class ListDetailActivity extends AppCompatActivity {
-    TextView nameTV,thingTV;
+    TextView nameTV,thingTV,timeTV;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listdetail);
         nameTV = (TextView)findViewById(R.id.nameTextView);
         thingTV = (TextView)findViewById(R.id.thingTextView);
+        timeTV = (TextView)findViewById(R.id.timeTextView);
         Intent intent = getIntent();
+        timeTV.setText(intent.getStringExtra("time"));
         nameTV.setText(intent.getStringExtra("name"));
         thingTV.setText(intent.getStringExtra("thing"));
+
     }
 }
