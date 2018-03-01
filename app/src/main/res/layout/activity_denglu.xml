@@ -37,11 +37,20 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
         android:textSize="25dp"/>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/jzmmCB"
+        android:text="记住密码"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="50dp"/>
     <Button
         android:id="@+id/dengluBtn"
         android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:text="登      录"
         android:textSize="25dp"
         android:textColor="@color/white"

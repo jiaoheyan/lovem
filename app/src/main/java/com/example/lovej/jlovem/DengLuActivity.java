@@ -2,11 +2,14 @@ package com.example.lovej.jlovem;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -17,6 +20,9 @@ import android.widget.Toast;
 public class DengLuActivity extends Activity {
     EditText nameEt,pwdEt;
     Button dengluBtn;
+    CheckBox jzmmCB;
+    private SharedPreferences pref;
+    private SharedPreferences.Editor editor;
     @Override
     protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +30,36 @@ public class DengLuActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.
                 FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_denglu);
+        pref= PreferenceManager.getDefaultSharedPreferences(this);
+        jzmmCB = (CheckBox)findViewById(R.id.jzmmCB);
         nameEt = (EditText)findViewById(R.id.nameEt);
         pwdEt = (EditText)findViewById(R.id.pwdEt);
+        boolean isRemenber=pref.getBoolean("remember_password",false);
+        if(isRemenber){
+            //将账号和密码都设置到文本中
+            String account=pref.getString("username","");
+            String password=pref.getString("password","");
+            nameEt.setText(account);
+            pwdEt.setText(password);
+            jzmmCB.setChecked(true);
+
+        }
         dengluBtn = (Button)findViewById(R.id.dengluBtn);
         dengluBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (nameEt.getText().toString().indexOf("123") == 0&&pwdEt.getText().toString().indexOf("123") == 0){
+                if (nameEt.getText().toString().equals("123")&&pwdEt.getText().toString().equals("123")){
+                    editor=pref.edit();
+                    if (jzmmCB.isChecked()){
+                        editor.putBoolean("remember_password",true);
+                        editor.putString("username",nameEt.getText().toString());
+                        editor.putString("password",pwdEt.getText().toString());
+                        editor.commit();
+                    }
+                    else {
+                        editor.clear();
+                    }
+                    editor.apply();
                     Intent intent = new Intent(DengLuActivity.this,MainActivity.class);
                     startActivity(intent);
                     finish();
