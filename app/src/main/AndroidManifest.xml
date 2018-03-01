@@ -19,8 +19,11 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".JiShiBenActivity"/>
         <activity android:name=".DengLuActivity"></activity>
-        <activity android:name=".jishiben.MainPageActivity"></activity>
-        <activity android:name=".jishiben.ListDetailActivity"></activity>
+        <activity android:name=".jishiben.MainPageActivity"
+                  android:label="我的日记"></activity>
+        <activity android:name=".jishiben.ListDetailActivity"
+            android:label="日记详情"></activity>
+        <activity android:name=".TestActivity"></activity>
     </application>
 
 </manifest>

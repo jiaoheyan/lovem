@@ -3,9 +3,11 @@ package com.example.lovej.jlovem;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.lovej.jlovem.jishiben.MainPageActivity;
 
@@ -38,13 +40,19 @@ public class JiShiBenActivity extends AppCompatActivity {
                 str = str.trim();
                 tiMuStr = tiMu.getText().toString();
                 neiRongStr = neiRong.getText().toString();
-                Intent intent = new Intent(JiShiBenActivity.this,MainPageActivity.class);
-                intent.putExtra("class","JiShiBenActivity");
-                intent.putExtra("timu",tiMuStr);
-                intent.putExtra("neirong",neiRongStr);
-                intent.putExtra("timers",str);
-                startActivity(intent);
-                finish();
+                if((TextUtils.isEmpty(tiMuStr))||TextUtils.isEmpty(neiRongStr)){
+                    Toast.makeText(JiShiBenActivity.this,"输入的题目和内容不能为空！",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Intent intent = new Intent(JiShiBenActivity.this,MainPageActivity.class);
+                    intent.putExtra("class","JiShiBenActivity");
+                    intent.putExtra("timu",tiMuStr);
+                    intent.putExtra("neirong",neiRongStr);
+                    intent.putExtra("timers",str);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
     }

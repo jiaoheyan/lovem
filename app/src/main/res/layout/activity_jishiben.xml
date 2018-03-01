@@ -7,10 +7,13 @@
     <EditText
         android:id="@+id/tiMuEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="标题"/>
     <EditText
         android:id="@+id/neiRongEditText"
+        android:gravity="top"
         android:layout_width="match_parent"
+        android:hint="写下此刻的想法"
         android:layout_height="200dp" />
     <Button
         android:id="@+id/msgButton"
