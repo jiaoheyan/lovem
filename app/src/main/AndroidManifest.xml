@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"/>
-        <activity android:name=".JiShiBenActivity"/>
+        <activity android:name=".JiShiBenActivity"
+            android:label="我的日记"/>
         <activity android:name=".DengLuActivity"></activity>
         <activity android:name=".jishiben.MainPageActivity"
                   android:label="我的日记"></activity>

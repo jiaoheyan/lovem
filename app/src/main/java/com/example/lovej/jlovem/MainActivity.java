@@ -26,6 +26,7 @@ import com.github.clans.fab.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
+import com.example.lovej.jlovem.jishiben.*;
 
 /**
  * Created by Administrator on 2017/12/25 0025.
@@ -100,6 +101,10 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         jishibenBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                ll.setVisibility(View.INVISIBLE);
+                jishibenBtn.setVisibility(View.INVISIBLE);
+                zhaopianBtn.setVisibility(View.INVISIBLE);
+                isFlag = !isFlag;
                 Intent intent = new Intent(MainActivity.this, JiShiBenActivity.class);
                 startActivity(intent);
             }
@@ -108,8 +113,14 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         zhaopianBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "还没做好，敬请期待！", Toast.LENGTH_LONG).show();
-
+//                Toast.makeText(MainActivity.this, "还没做好，敬请期待！", Toast.LENGTH_LONG).show();
+                ll.setVisibility(View.INVISIBLE);
+                jishibenBtn.setVisibility(View.INVISIBLE);
+                zhaopianBtn.setVisibility(View.INVISIBLE);
+                isFlag = !isFlag;
+                Intent intent = new Intent(MainActivity.this,MainPageActivity.class);
+                intent.putExtra("class","MainActivity");
+                startActivity(intent);
             }
         });
     }
