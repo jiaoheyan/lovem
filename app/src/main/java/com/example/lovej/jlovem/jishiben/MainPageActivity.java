@@ -169,6 +169,7 @@ public class MainPageActivity extends AppCompatActivity  {
         private View view;
         private String name2;
         private String timers2;
+        private String timers3;
         @SuppressLint("ViewHolder") @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder holder=null ;//设置静态类使其初始化
@@ -180,6 +181,8 @@ public class MainPageActivity extends AppCompatActivity  {
                 holder.tv_name = (TextView) view.findViewById(R.id.tv_n);
                 holder.tv_sex = (TextView) view.findViewById(R.id.tv_s);
                 holder.tv_timers = (TextView) view.findViewById(R.id.tv_timers);
+                holder.tv_timerH = (TextView) view.findViewById(R.id.tv_timerH);
+                holder.tv_timerAP = (TextView) view.findViewById(R.id.tv_timerAP);
 
                 view.setTag(holder);//用来保存一些数据结构。
             }else{
@@ -189,11 +192,18 @@ public class MainPageActivity extends AppCompatActivity  {
             }
             name2 = list.get(position).getName();
             sex2 = list.get(position).getSex();
-            timers2 = list.get(position).getTimers();
-
+            timers2 = list.get(position).getTimers().substring(0,10);
+            timers3 = list.get(position).getTimers().substring(11);
+            if (Integer.parseInt( timers3.substring(0,2))>12){
+                holder.tv_timerAP.setText("PM");
+            }
+            else {
+                holder.tv_timerAP.setText("AM");
+            }
             holder.tv_name.setText(name2);
             holder.tv_sex.setText(sex2);
             holder.tv_timers.setText(timers2);
+            holder.tv_timerH.setText(timers3);
 
             return view;
         }
@@ -213,15 +223,14 @@ public class MainPageActivity extends AppCompatActivity  {
 
             return 0;
         }
-
-
-
     }
     //ViewHolder静态类
     static class ViewHolder{
         TextView tv_name;
         TextView tv_sex;
         TextView tv_timers;
+        TextView tv_timerH;
+        TextView tv_timerAP;
     }
 
 }

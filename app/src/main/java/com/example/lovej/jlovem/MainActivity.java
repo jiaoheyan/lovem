@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     Button jishibenBtn,zhaopianBtn;
     FloatingActionButton fab;
     LinearLayout ll;
+    private PrinterTextView mPrinterTextView;
     boolean isFlag = false;
     private ViewPager vpGuide;
     private LinearLayout llpointgroup;
@@ -65,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         setContentView(R.layout.activity_main);
         ll = (LinearLayout) findViewById(R.id.mengbanLL);
         fab = (FloatingActionButton) findViewById(R.id.fab1);
+        mPrinterTextView = (PrinterTextView) findViewById(R.id.pt_my);
+        mPrinterTextView.setPrintText("草原上有对狮子母子。小狮子问母狮子：“妈，幸福在哪里?”母狮子说：“幸福就在你的尾巴上。”\n" +
+                "　　于是小狮子不断追着尾巴跑，但始终咬不到。母狮子笑道：“傻瓜!幸福不是这样得到的!只要你昂首向前走，幸福就会一直跟随着你!”。", 100, "|");
+        mPrinterTextView.startPrint();
         timer = new Timer();//创建Timer对象
         //执行定时任务
         timer.schedule(new TimerTask() {

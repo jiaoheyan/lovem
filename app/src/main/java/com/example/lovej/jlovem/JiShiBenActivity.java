@@ -34,7 +34,7 @@ public class JiShiBenActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd");
+                SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd HH:mm");
                 Date curDate = new Date(System.currentTimeMillis());//获取当前时间
                 str = formatter.format(curDate);
                 str = str.trim();

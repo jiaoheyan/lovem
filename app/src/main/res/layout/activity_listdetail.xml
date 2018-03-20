@@ -16,12 +16,15 @@
             android:id="@+id/timeTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="timer"
             android:textSize="20dp"/>
         <TextView
             android:id="@+id/nameTextView"
             android:layout_gravity="center_horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="name"
             android:textSize="30dp"/>
         <ScrollView
             android:layout_width="match_parent"
@@ -31,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:singleLine="false"
+            android:text="thing"
             android:textSize="25dp"/>
         </ScrollView>
 

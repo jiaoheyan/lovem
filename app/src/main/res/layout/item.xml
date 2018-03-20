@@ -15,12 +15,14 @@
             android:layout_height="20dp"
             android:background="@drawable/time"/>
         <TextView
+            android:id="@+id/tv_timerH"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="15dp"
             android:layout_marginLeft="5dp"
             android:text="10:00"/>
         <TextView
+            android:id="@+id/tv_timerAP"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
