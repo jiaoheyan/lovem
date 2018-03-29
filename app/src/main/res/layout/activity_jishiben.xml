@@ -9,17 +9,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="标题"/>
-    <EditText
-        android:id="@+id/neiRongEditText"
-        android:gravity="top"
-        android:layout_width="match_parent"
-        android:hint="写下此刻的想法"
-        android:layout_height="200dp" />
+        <EditText
+            android:id="@+id/neiRongEditText"
+            android:gravity="top"
+            android:layout_width="match_parent"
+            android:hint="写下此刻的想法"
+            android:layout_height="400dp" />
 
     <Button
         android:id="@+id/msgButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="500px"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/buttonshape"
+        android:text="保  存"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        />
     <Button
         android:id="@+id/msgButtons"
         android:layout_width="wrap_content"
