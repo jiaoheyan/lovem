@@ -7,51 +7,79 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"    >
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vp_guide"
-        android:layout_width="match_parent"
-        android:layout_height="432px"
-        />
+        android:layout_height="wrap_content" >
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400px"
-        android:layout_centerHorizontal="true" >
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_guide"
+            android:layout_width="match_parent"
+            android:layout_height="500px"/>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/ll_point_group"
-            android:orientation="horizontal"
-            >
-        </LinearLayout>
+            android:layout_marginTop="450px"
+            android:layout_centerHorizontal="true" >
 
-        <View
-            android:layout_width="5dp"
-            android:layout_height="5dp"
-            android:id="@+id/viewRedPoint"
-            android:background="@drawable/shape_point_red"/>
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ll_point_group"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:id="@+id/viewRedPoint"
+                android:background="@drawable/shape_point_red"/>
+
+        </RelativeLayout>
     </RelativeLayout>
     <com.example.lovej.jlovem.PrinterTextView
         android:id="@+id/pt_my"
-        android:layout_marginTop="500px"
+        android:layout_marginTop="550px"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#999999"
         android:textSize="15sp" />
 
-
-
     <LinearLayout
-    android:id="@+id/mengbanLL"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/gray"
-    android:orientation="horizontal"
-    android:visibility="invisible">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="80dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/jLoveLBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="我爱你"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            />
+        <Button
+            android:id="@+id/shiShiBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/buttonshape"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:text="点一下"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/mengbanLL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
+        android:orientation="horizontal"
+        android:visibility="invisible">
     </LinearLayout>
 
     <LinearLayout
@@ -59,35 +87,40 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="horizontal">
+
         <Button
             android:id="@+id/jishibenBtn"
-            android:layout_width="150dp"
-            android:layout_gravity="center_vertical"
-            android:visibility="invisible"
+            android:layout_width="148dp"
             android:layout_height="260dp"
-            android:text="记录我的心情"/>
+            android:layout_gravity="center_vertical"
+            android:text="记录我的心情"
+            android:textSize="20dp"
+            android:visibility="invisible" />
         <Button
             android:id="@+id/zhaopianBtn"
             android:layout_width="150dp"
             android:visibility="invisible"
             android:layout_gravity="center_vertical"
             android:layout_height="260dp"
+            android:textSize="20dp"
             android:text="我的心情"/>
     </LinearLayout>
-        <com.github.clans.fab.FloatingActionButton
-            android:id="@+id/fab1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_margin="16dp"
-            app:backgroundTint="#30469b"
-            android:background="@mipmap/heart"
-            app:borderWidth="0dp"
-            app:elevation="6dp"
-            app:fabSize="normal"
-            app:layout_anchorGravity="bottom|right"
-            app:pressedTranslationZ="12dp"
-            app:rippleColor="#a6a6a6" />
+
+    <com.github.clans.fab.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="16dp"
+        app:backgroundTint="#30469b"
+        android:background="@mipmap/heart"
+        app:borderWidth="0dp"
+        app:elevation="6dp"
+        app:fabSize="normal"
+        app:layout_anchorGravity="bottom|right"
+        app:pressedTranslationZ="12dp"
+        app:rippleColor="#a6a6a6" />
+
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -33,7 +33,7 @@ import com.example.lovej.jlovem.jishiben.*;
  */
 
 public class MainActivity extends AppCompatActivity implements Animation.AnimationListener{
-    Button jishibenBtn,zhaopianBtn;
+    Button jishibenBtn,zhaopianBtn,jLoveLBtn;
     FloatingActionButton fab;
     LinearLayout ll;
     private PrinterTextView mPrinterTextView;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     int index = 0;
     private View viewRedPoint;
     private int mPointWidth;
-    private static final int[] mImageIds = new int[]{R.drawable.splashbg,R.drawable.splashbg,
+    private static final int[] mImageIds = new int[]{R.drawable.fir,R.drawable.thr,
             R.drawable.splashbg};
     private ArrayList<ImageView> mImageViewList;
     private Timer timer;
@@ -67,8 +67,13 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         ll = (LinearLayout) findViewById(R.id.mengbanLL);
         fab = (FloatingActionButton) findViewById(R.id.fab1);
         mPrinterTextView = (PrinterTextView) findViewById(R.id.pt_my);
-        mPrinterTextView.setPrintText("草原上有对狮子母子。小狮子问母狮子：“妈，幸福在哪里?”母狮子说：“幸福就在你的尾巴上。”\n" +
-                "　　于是小狮子不断追着尾巴跑，但始终咬不到。母狮子笑道：“傻瓜!幸福不是这样得到的!只要你昂首向前走，幸福就会一直跟随着你!”。", 100, "|");
+        mPrinterTextView.setPrintText("我有一只小毛驴\n" +
+                "我从来也不骑\n" +
+                "有一天我心血来潮骑他去赶集\n" +
+                "我手里拿着小皮鞭\n" +
+                "我心里正得意\n" +
+                "不知怎么哗啦啦啦啦\n" +
+                "我摔了一身泥”\n" , 100, "|");
         mPrinterTextView.startPrint();
         timer = new Timer();//创建Timer对象
         //执行定时任务
@@ -125,6 +130,15 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
                 isFlag = !isFlag;
                 Intent intent = new Intent(MainActivity.this,MainPageActivity.class);
                 intent.putExtra("class","MainActivity");
+                startActivity(intent);
+            }
+        });
+        jLoveLBtn = (Button)findViewById(R.id.jLoveLBtn);
+        jLoveLBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("http://www.jlovel.top");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);
             }
         });

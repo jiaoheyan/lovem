@@ -26,9 +26,4 @@
         android:textColor="@color/white"
         android:textSize="20dp"
         />
-    <Button
-        android:id="@+id/msgButtons"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="notificationAPI_16p"/>
 </LinearLayout>

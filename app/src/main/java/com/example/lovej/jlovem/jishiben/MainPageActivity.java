@@ -49,13 +49,8 @@ public class MainPageActivity extends AppCompatActivity  {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mainpage);
-        initView();
-        initDate();
-    }
-    //初始化视图
-    private void initView() {
         listView1=(ListView) findViewById(R.id.listView1);
-
+        initDate();
     }
     private void intentMsg(){
         Intent intent = getIntent();
@@ -64,20 +59,13 @@ public class MainPageActivity extends AppCompatActivity  {
             showsex = intent.getStringExtra("neirong").trim();
             str = intent.getStringExtra("timers");
             stu=new Student(name,showsex,str);
-
-            if(TextUtils.isEmpty(name) || TextUtils.isEmpty(showsex)){
-                Toast.makeText(MainPageActivity.this, "添加信息不能为空", Toast.LENGTH_LONG).show();
-
-            }else{
-
-                boolean add = dao.add(stu);
-                if(add){
-                    list=dao.findAll();
-                    adapter.notifyDataSetInvalidated();
-                    Toast.makeText(MainPageActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(MainPageActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
-                }
+            boolean add = dao.add(stu);
+            if(add){
+                list=dao.findAll();
+                adapter.notifyDataSetInvalidated();
+                Toast.makeText(MainPageActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(MainPageActivity.this, "添加失败", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -188,7 +176,6 @@ public class MainPageActivity extends AppCompatActivity  {
             }else{
                 view=convertView;//复用历史缓存
                 holder=(ViewHolder) view.getTag();
-
             }
             name2 = list.get(position).getName();
             sex2 = list.get(position).getSex();
@@ -214,7 +201,6 @@ public class MainPageActivity extends AppCompatActivity  {
 
         @Override
         public Object getItem(int position) {
-
             return null;
         }
 
