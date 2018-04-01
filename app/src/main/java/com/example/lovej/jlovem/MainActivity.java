@@ -43,8 +43,8 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
     int index = 0;
     private View viewRedPoint;
     private int mPointWidth;
-    private static final int[] mImageIds = new int[]{R.drawable.fir,R.drawable.thr,
-            R.drawable.splashbg};
+    private static final int[] mImageIds = new int[]{R.drawable.fir,
+            R.drawable.sec,R.drawable.thr};
     private ArrayList<ImageView> mImageViewList;
     private Timer timer;
     Handler mHandler  = new Handler(){
@@ -80,9 +80,10 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
+
                 mHandler.sendEmptyMessage(1);
             }
-        }, 2000, 2000);
+        }, 3000, 3000);
 
         vpGuide = (ViewPager) findViewById(R.id.vp_guide);
         llpointgroup = (LinearLayout) findViewById(R.id.ll_point_group);
@@ -153,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
         for (int i = 0; i < mImageIds.length; i++) {
             View point = new View(this);
             point.setBackgroundResource(R.drawable.shape_point_gray);
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10,10);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(15,15);
             if(i > 0)
             {
                 params.leftMargin = 10;

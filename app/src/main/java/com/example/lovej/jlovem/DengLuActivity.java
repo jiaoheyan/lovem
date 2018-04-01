@@ -10,7 +10,6 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -23,9 +22,8 @@ import java.util.TimerTask;
  * Created by Administrator on 2018/2/22 0022.
  */
 
-public class DengLuActivity extends Activity {
+public class   DengLuActivity extends Activity {
     EditText nameEt,pwdEt;
-    Button dengluBtn;
     CheckBox jzmmCB;
     private SharedPreferences sp;
     private SharedPreferences.Editor editor;
@@ -47,21 +45,6 @@ public class DengLuActivity extends Activity {
             pwdEt.setText(password);
             jzmmCB.setChecked(true);
         }
-        dengluBtn = (Button)findViewById(R.id.dengluBtn);
-        dengluBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                if (nameEt.getText().toString().indexOf("123") == 0&&pwdEt.getText().toString().indexOf("123") == 0){
-                    Intent intent = new Intent(DengLuActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-//                }
-//                else {
-//                    Toast.makeText(DengLuActivity.this,"输入的账号或者密码错误，请重新输入！",Toast.LENGTH_LONG).show();
-//                }
-
-            }
-        });
 
     }
     private void initView(){
