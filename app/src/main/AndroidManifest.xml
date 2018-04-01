@@ -28,6 +28,7 @@
             android:theme="@style/DetailAppRheme"
             android:label="日记详情"></activity>
         <activity android:name=".TestActivity"></activity>
+        <activity android:name=".FirstValentineDayActivity"></activity>
     </application>
 
 </manifest>

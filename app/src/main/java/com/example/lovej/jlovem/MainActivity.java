@@ -33,7 +33,7 @@ import com.example.lovej.jlovem.jishiben.*;
  */
 
 public class MainActivity extends AppCompatActivity implements Animation.AnimationListener{
-    Button jishibenBtn,zhaopianBtn,jLoveLBtn;
+    Button jishibenBtn,zhaopianBtn,jLoveLBtn,firDayBtn;
     FloatingActionButton fab;
     LinearLayout ll;
     private PrinterTextView mPrinterTextView;
@@ -140,6 +140,14 @@ public class MainActivity extends AppCompatActivity implements Animation.Animati
             public void onClick(View v) {
                 Uri uri = Uri.parse("http://www.jlovel.top");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+        firDayBtn = (Button)findViewById(R.id.shiShiBtn);
+        firDayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FirstValentineDayActivity.class);
                 startActivity(intent);
             }
         });
