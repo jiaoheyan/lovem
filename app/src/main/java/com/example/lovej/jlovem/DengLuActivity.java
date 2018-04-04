@@ -37,6 +37,11 @@ public class   DengLuActivity extends Activity {
         sp = PreferenceManager.getDefaultSharedPreferences(this);
         initView();
         boolean isRemenber=sp.getBoolean("remember_password",false);
+
+        ImageView image_scale = (ImageView) findViewById(R.id.image_scale);
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.size);
+        image_scale.startAnimation(animation);
+
         if(isRemenber){
             //将账号和密码都设置到文本中
             String username=sp.getString("username","");
@@ -53,35 +58,34 @@ public class   DengLuActivity extends Activity {
         jzmmCB = (CheckBox)findViewById(R.id.jzmmCB);
     }
     public void imageSize(View view) {
-        ImageView image_scale = (ImageView) findViewById(R.id.image_scale);
-        Animation animation = AnimationUtils.loadAnimation(this,R.anim.size);
-        image_scale.startAnimation(animation);
-        TimerTask task = new TimerTask() {
-            @Override
-            public void run() {
-                if (nameEt.getText().toString().equals("123")&&pwdEt.getText().toString().equals("123")){
-                    editor=sp.edit();
-                    if (jzmmCB.isChecked()){
-                        editor.putBoolean("remember_password",true);
-                        editor.putString("username",nameEt.getText().toString());
-                        editor.putString("password",pwdEt.getText().toString());
-                        editor.commit();
-                    }
-                    else {
-                        editor.clear();
-                    }
-                    editor.apply();
-                    Intent intent = new Intent(DengLuActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-                    Toast.makeText(DengLuActivity.this,"输入的账号或者密码错误，请重新输入！",Toast.LENGTH_LONG).show();
-                }
+
+//        TimerTask task = new TimerTask() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        };
+//        Timer timer = new Timer();
+//        timer.schedule(task, 3000);
+        if (nameEt.getText().toString().equals("吕慧敏")&&pwdEt.getText().toString().equals("940218")){
+            editor=sp.edit();
+            if (jzmmCB.isChecked()){
+                editor.putBoolean("remember_password",true);
+                editor.putString("username",nameEt.getText().toString());
+                editor.putString("password",pwdEt.getText().toString());
+                editor.commit();
             }
-        };
-        Timer timer = new Timer();
-        timer.schedule(task, 3000);
+            else {
+                editor.clear();
+            }
+            editor.apply();
+            Intent intent = new Intent(DengLuActivity.this,MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        else {
+            Toast.makeText(DengLuActivity.this,"输入的账号或者密码错误，请重新输入！",Toast.LENGTH_LONG).show();
+        }
     }
 
 }
